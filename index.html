@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jirine — Automation & AI Architect</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --cream:#E5D9C3;
+  --blush:#E8B4A8;
+  --charcoal:#2B2B2B;
+  --brown:#6B4A32;
+  --red:#B03A2E;
+  --white:#F8F4EC;
+  --line:rgba(43,43,43,.16);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--cream);
+  color:var(--charcoal);
+  font-family:Inter, sans-serif;
+  overflow-x:hidden;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.container{
+  width:min(1240px, 88%);
+  margin:auto;
+}
+
+/* ---------------- NAV ---------------- */
+
+nav{
+  height:92px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid var(--line);
+  position:relative;
+  z-index:10;
+}
+
+.logo{
+  font-family:Montserrat,sans-serif;
+  font-weight:800;
+  font-size:19px;
+  letter-spacing:-.04em;
+}
+
+.logo span{
+  color:var(--red);
+}
+
+.nav-links{
+  display:flex;
+  gap:38px;
+  font-size:13px;
+  font-weight:500;
+}
+
+.nav-links a{
+  position:relative;
+}
+
+.nav-links a:after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:1px;
+  background:var(--charcoal);
+  transition:.3s;
+}
+
+.nav-links a:hover:after{
+  width:100%;
+}
+
+.nav-cta{
+  border:1px solid var(--charcoal);
+  padding:13px 20px;
+  font-size:12px;
+  font-weight:600;
+  transition:.3s;
+}
+
+.nav-cta:hover{
+  background:var(--charcoal);
+  color:var(--cream);
+}
+
+/* ---------------- HERO ---------------- */
+
+.hero{
+  min-height:calc(100vh - 92px);
+  display:grid;
+  grid-template-columns:1.25fr .75fr;
+  align-items:center;
+  position:relative;
+  padding:90px 0 100px;
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+  width:390px;
+  height:390px;
+  background:var(--blush);
+  border-radius:50%;
+  right:-130px;
+  top:90px;
+  opacity:.55;
+  z-index:-1;
+}
+
+.eyebrow{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:11px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  margin-bottom:30px;
+}
+
+.eyebrow:before{
+  content:"";
+  width:38px;
+  height:1px;
+  background:var(--red);
+}
+
+.hero h1{
+  font-family:Montserrat,sans-serif;
+  font-weight:800;
+  font-size:clamp(55px,7.2vw,104px);
+  line-height:.91;
+  letter-spacing:-.065em;
+  max-width:950px;
+}
+
+.hero h1 em{
+  font-style:normal;
+  color:var(--brown);
+}
+
+.hero-copy{
+  margin-top:38px;
+  max-width:580px;
+  font-size:17px;
+  line-height:1.7;
+  color:#4b4037;
+}
+
+.hero-actions{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  margin-top:38px;
+}
+
+.primary-btn{
+  background:var(--charcoal);
+  color:var(--white);
+  padding:17px 26px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.02em;
+  transition:.3s;
+}
+
+.primary-btn:hover{
+  background:var(--red);
+  transform:translateY(-2px);
+}
+
+.text-link{
+  font-size:12px;
+  font-weight:600;
+  border-bottom:1px solid var(--charcoal);
+  padding-bottom:4px;
+}
+
+.hero-side{
+  justify-self:end;
+  width:280px;
+  position:relative;
+}
+
+.architecture-mark{
+  width:240px;
+  height:300px;
+  border:1px solid rgba(43,43,43,.35);
+  position:relative;
+  transform:rotate(7deg);
+  margin:auto;
+}
+
+.architecture-mark:before,
+.architecture-mark:after{
+  content:"";
+  position:absolute;
+  border:1px solid rgba(43,43,43,.28);
+}
+
+.architecture-mark:before{
+  inset:28px;
+}
+
+.architecture-mark:after{
+  inset:60px;
+}
+
+.mark-center{
+  position:absolute;
+  width:76px;
+  height:76px;
+  background:var(--red);
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+}
+
+.hero-note{
+  margin-top:40px;
+  font-size:11px;
+  line-height:1.6;
+  color:#67594c;
+  max-width:210px;
+}
+
+/* ---------------- MARQUEE ---------------- */
+
+.marquee{
+  background:var(--charcoal);
+  color:var(--cream);
+  overflow:hidden;
+  padding:17px 0;
+  white-space:nowrap;
+}
+
+.marquee-track{
+  display:inline-flex;
+  gap:50px;
+  animation:scroll 25s linear infinite;
+  font-family:Montserrat,sans-serif;
+  font-size:11px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.13em;
+}
+
+.marquee-dot{
+  color:var(--blush);
+}
+
+@keyframes scroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* ---------------- INTRO ---------------- */
+
+.intro{
+  padding:150px 0;
+}
+
+.intro-grid{
+  display:grid;
+  grid-template-columns:.35fr 1fr;
+  gap:80px;
+}
+
+.section-number{
+  font-family:Montserrat,sans-serif;
+  font-size:12px;
+  font-weight:700;
+  color:var(--red);
+}
+
+.intro h2{
+  font-family:Montserrat,sans-serif;
+  font-size:clamp(38px,5vw,67px);
+  line-height:1;
+  letter-spacing:-.055em;
+  max-width:850px;
+}
+
+.intro h2 span{
+  color:#8b7966;
+}
+
+.intro-text{
+  margin-top:45px;
+  max-width:680px;
+  font-size:17px;
+  line-height:1.75;
+  color:#54493f;
+}
+
+/* ---------------- SERVICES ---------------- */
+
+.services{
+  background:var(--charcoal);
+  color:var(--white);
+  padding:140px 0;
+}
+
+.services-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  margin-bottom:80px;
+}
+
+.services h2{
+  font-family:Montserrat,sans-serif;
+  font-size:clamp(45px,6vw,78px);
+  line-height:.95;
+  letter-spacing:-.06em;
+}
+
+.services-intro{
+  max-width:320px;
+  color:#cfc5b8;
+  font-size:14px;
+  line-height:1.7;
+}
+
+.service-list{
+  border-top:1px solid rgba(248,244,236,.2);
+}
+
+.service{
+  display:grid;
+  grid-template-columns:80px 1fr 1fr 40px;
+  gap:30px;
+  align-items:center;
+  padding:38px 0;
+  border-bottom:1px solid rgba(248,244,236,.2);
+  transition:.35s;
+}
+
+.service:hover{
+  padding-left:18px;
+  padding-right:18px;
+  background:rgba(255,255,255,.025);
+}
+
+.service-num{
+  font-size:11px;
+  color:var(--blush);
+}
+
+.service h3{
+  font-family:Montserrat,sans-serif;
+  font-size:23px;
+  letter-spacing:-.03em;
+}
+
+.service p{
+  font-size:13px;
+  line-height:1.6;
+  color:#bfb4a7;
+}
+
+.service-arrow{
+  font-size:22px;
+}
+
+/* ---------------- PHILOSOPHY ---------------- */
+
+.philosophy{
+  padding:150px 0;
+  position:relative;
+}
+
+.philosophy-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:100px;
+  align-items:center;
+}
+
+.philosophy h2{
+  font-family:Montserrat,sans-serif;
+  font-size:clamp(43px,5vw,72px);
+  line-height:.96;
+  letter-spacing:-.06em;
+}
+
+.philosophy h2 strong{
+  color:var(--red);
+}
+
+.philosophy-copy{
+  font-size:16px;
+  line-height:1.8;
+  color:#554a40;
+}
+
+.principles{
+  margin-top:45px;
+}
+
+.principle{
+  display:flex;
+  gap:18px;
+  padding:18px 0;
+  border-bottom:1px solid var(--line);
+  font-size:13px;
+}
+
+.principle span{
+  color:var(--red);
+  font-weight:700;
+}
+
+/* ---------------- PROCESS ---------------- */
+
+.process{
+  padding:120px 0;
+  background:var(--blush);
+}
+
+.process-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:start;
+  margin-bottom:75px;
+}
+
+.process h2{
+  font-family:Montserrat,sans-serif;
+  font-size:clamp(45px,6vw,75px);
+  letter-spacing:-.06em;
+  line-height:.95;
+}
+
+.process-header p{
+  max-width:330px;
+  font-size:14px;
+  line-height:1.7;
+}
+
+.process-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;
+}
+
+.process-card{
+  border-top:1px solid var(--charcoal);
+  padding:30px 35px 30px 0;
+  min-height:240px;
+}
+
+.process-card:not(:last-child){
+  border-right:1px solid rgba(43,43,43,.25);
+  margin-right:35px;
+}
+
+.process-num{
+  font-family:Montserrat,sans-serif;
+  font-size:12px;
+  color:var(--red);
+  margin-bottom:55px;
+}
+
+.process-card h3{
+  font-family:Montserrat,sans-serif;
+  font-size:22px;
+  margin-bottom:15px;
+}
+
+.process-card p{
+  font-size:13px;
+  line-height:1.65;
+  color:#51443a;
+}
+
+/* ---------------- OUTCOME ---------------- */
+
+.outcome{
+  padding:150px 0;
+}
+
+.outcome-box{
+  background:var(--charcoal);
+  color:var(--white);
+  padding:90px;
+  position:relative;
+  overflow:hidden;
+}
+
+.outcome-box:after{
+  content:"";
+  position:absolute;
+  width:300px;
+  height:300px;
+  border:1px solid rgba(232,180,168,.35);
+  border-radius:50%;
+  right:-100px;
+  bottom:-100px;
+}
+
+.outcome-label{
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  color:var(--blush);
+  margin-bottom:35px;
+}
+
+.outcome h2{
+  font-family:Montserrat,sans-serif;
+  font-size:clamp(45px,6vw,80px);
+  line-height:.95;
+  letter-spacing:-.06em;
+  max-width:850px;
+}
+
+.outcome h2 span{
+  color:var(--blush);
+}
+
+.outcome p{
+  margin-top:35px;
+  max-width:560px;
+  color:#cfc4b8;
+  line-height:1.7;
+  font-size:15px;
+}
+
+/* ---------------- ABOUT ---------------- */
+
+.about{
+  padding:140px 0;
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:100px;
+}
+
+.about-label{
+  font-size:11px;
+  color:var(--red);
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+}
+
+.about h2{
+  font-family:Montserrat,sans-serif;
+  font-size:clamp(42px,5vw,68px);
+  line-height:.96;
+  letter-spacing:-.06em;
+  margin-top:25px;
+}
+
+.about-copy{
+  font-size:17px;
+  line-height:1.8;
+  color:#554a40;
+  max-width:670px;
+}
+
+.about-copy p+p{
+  margin-top:24px;
+}
+
+.signature{
+  margin-top:45px;
+  font-family:Montserrat,sans-serif;
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.08em;
+}
+
+/* ---------------- CTA ---------------- */
+
+.cta{
+  background:var(--blush);
+  padding:130px 0;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.cta:before{
+  content:"";
+  position:absolute;
+  width:500px;
+  height:500px;
+  border:1px solid rgba(43,43,43,.16);
+  border-radius:50%;
+  left:-250px;
+  top:-200px;
+}
+
+.cta h2{
+  font-family:Montserrat,sans-serif;
+  font-size:clamp(48px,7vw,92px);
+  line-height:.92;
+  letter-spacing:-.07em;
+  max-width:950px;
+  margin:auto;
+}
+
+.cta p{
+  max-width:500px;
+  margin:30px auto 38px;
+  font-size:15px;
+  line-height:1.7;
+  color:#55453b;
+}
+
+.cta .primary-btn{
+  display:inline-block;
+}
+
+/* ---------------- FOOTER ---------------- */
+
+footer{
+  background:var(--charcoal);
+  color:var(--white);
+  padding:55px 0 35px;
+}
+
+.footer-top{
+  display:flex;
+  justify-content:space-between;
+  padding-bottom:50px;
+  border-bottom:1px solid rgba(248,244,236,.15);
+}
+
+.footer-brand{
+  font-family:Montserrat,sans-serif;
+  font-weight:800;
+  font-size:24px;
+}
+
+.footer-brand span{
+  color:var(--blush);
+}
+
+.footer-links{
+  display:flex;
+  gap:35px;
+  font-size:12px;
+  color:#c7bdb2;
+}
+
+.footer-bottom{
+  padding-top:25px;
+  display:flex;
+  justify-content:space-between;
+  color:#847b72;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+/* ---------------- WORDMARK ---------------- */
+
+.side-wordmark{
+  position:fixed;
+  right:20px;
+  top:50%;
+  transform:translateY(-50%) rotate(90deg);
+  transform-origin:center;
+  font-size:9px;
+  letter-spacing:.4em;
+  font-weight:600;
+  opacity:.45;
+  z-index:20;
+  pointer-events:none;
+}
+
+/* ---------------- REVEAL ---------------- */
+
+.reveal{
+  opacity:0;
+  transform:translateY(25px);
+  transition:opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ---------------- MOBILE ---------------- */
+
+@media(max-width:850px){
+
+  .nav-links{
+    display:none;
+  }
+
+  nav{
+    height:76px;
+  }
+
+  .hero{
+    grid-template-columns:1fr;
+    padding:70px 0 90px;
+  }
+
+  .hero-side{
+    display:none;
+  }
+
+  .hero h1{
+    font-size:clamp(49px,14vw,76px);
+  }
+
+  .hero-copy{
+    font-size:15px;
+  }
+
+  .intro,
+  .philosophy,
+  .about,
+  .outcome{
+    padding:95px 0;
+  }
+
+  .intro-grid,
+  .philosophy-grid,
+  .about-grid{
+    grid-template-columns:1fr;
+    gap:45px;
+  }
+
+  .services{
+    padding:95px 0;
+  }
+
+  .services-head,
+  .process-header{
+    display:block;
+  }
+
+  .services-intro,
+  .process-header p{
+    margin-top:25px;
+  }
+
+  .service{
+    grid-template-columns:35px 1fr 25px;
+    gap:15px;
+  }
+
+  .service p{
+    display:none;
+  }
+
+  .process{
+    padding:90px 0;
+  }
+
+  .process-grid{
+    grid-template-columns:1fr;
+  }
+
+  .process-card{
+    min-height:auto;
+    padding:30px 0;
+  }
+
+  .process-card:not(:last-child){
+    border-right:0;
+    border-bottom:1px solid rgba(43,43,43,.25);
+    margin-right:0;
+  }
+
+  .process-num{
+    margin-bottom:30px;
+  }
+
+  .outcome-box{
+    padding:55px 30px;
+  }
+
+  .footer-top,
+  .footer-bottom{
+    display:block;
+  }
+
+  .footer-links{
+    margin-top:30px;
+    flex-wrap:wrap;
+    gap:20px;
+  }
+
+  .footer-bottom div+div{
+    margin-top:10px;
+  }
+
+  .side-wordmark{
+    display:none;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="side-wordmark">JIRINE</div>
+
+<header>
+  <div class="container">
+    <nav>
+      <a href="#" class="logo">JIRINE<span>.</span></a>
+
+      <div class="nav-links">
+        <a href="#systems">Systems</a>
+        <a href="#process">Process</a>
+        <a href="#about">About</a>
+      </div>
+
+      <a href="#contact" class="nav-cta">LET'S TALK</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero container reveal">
+
+  <div>
+    <div class="eyebrow">
+      AUTOMATION & AI ARCHITECT
+    </div>
+
+    <h1>
+      Build a business<br>
+      that works <em>without</em><br>
+      you.
+    </h1>
+
+    <p class="hero-copy">
+      I design the systems behind growing businesses — so leads are captured,
+      conversations keep moving, and repetitive work happens without you
+      constantly stepping in.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#contact" class="primary-btn">
+        HAVE ME BUILD IT FOR YOU →
+      </a>
+
+      <a href="#systems" class="text-link">
+        Explore the systems
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-side">
+    <div class="architecture-mark">
+      <div class="mark-center"></div>
+    </div>
+
+    <p class="hero-note">
+      Strategy is only useful when the
+      system behind it can actually run.
+    </p>
+  </div>
+
+</section>
+
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>LEADS CAPTURED</span>
+    <span class="marquee-dot">●</span>
+    <span>CALLS ANSWERED</span>
+    <span class="marquee-dot">●</span>
+    <span>FOLLOW-UPS AUTOMATED</span>
+    <span class="marquee-dot">●</span>
+    <span>TIME GIVEN BACK</span>
+    <span class="marquee-dot">●</span>
+
+    <span>LEADS CAPTURED</span>
+    <span class="marquee-dot">●</span>
+    <span>CALLS ANSWERED</span>
+    <span class="marquee-dot">●</span>
+    <span>FOLLOW-UPS AUTOMATED</span>
+    <span class="marquee-dot">●</span>
+    <span>TIME GIVEN BACK</span>
+    <span class="marquee-dot">●</span>
+  </div>
+</div>
+
+
+<!-- INTRO -->
+<section class="intro container reveal">
+
+  <div class="intro-grid">
+
+    <div>
+      <div class="section-number">01 / THE PROBLEM</div>
+    </div>
+
+    <div>
+      <h2>
+        Your business shouldn't
+        <span>depend on you</span>
+        doing everything.
+      </h2>
+
+      <p class="intro-text">
+        Most business owners don't need another tool.
+        They need the pieces of their business to finally
+        work together.
+        <br><br>
+        When leads fall through, follow-ups are forgotten,
+        calls go unanswered and your team keeps repeating
+        the same tasks, growth becomes exhausting.
+        <br><br>
+        That's where the right system changes everything.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SYSTEMS -->
+<section class="services reveal" id="systems">
+
+  <div class="container">
+
+    <div class="services-head">
+
+      <h2>
+        Systems<br>
+        that work.
+      </h2>
+
+      <p class="services-intro">
+        I build practical automation systems around
+        the way your business actually operates.
+      </p>
+
+    </div>
+
+    <div class="service-list">
+
+      <div class="service">
+        <div class="service-num">01</div>
+
+        <h3>Lead Capture</h3>
+
+        <p>
+          Capture inquiries automatically and move
+          every opportunity into the right next step.
+        </p>
+
+        <div class="service-arrow">↗</div>
+      </div>
+
+      <div class="service">
+        <div class="service-num">02</div>
+
+        <h3>Follow-Up Systems</h3>
+
+        <p>
+          Keep conversations moving without relying
+          on someone remembering who to follow up with.
+        </p>
+
+        <div class="service-arrow">↗</div>
+      </div>
+
+      <div class="service">
+        <div class="service-num">03</div>
+
+        <h3>AI Reception</h3>
+
+        <p>
+          Give prospects a responsive experience
+          even when you or your team are unavailable.
+        </p>
+
+        <div class="service-arrow">↗</div>
+      </div>
+
+      <div class="service">
+        <div class="service-num">04</div>
+
+        <h3>Business Workflows</h3>
+
+        <p>
+          Connect the repetitive pieces so information
+          moves automatically between your systems.
+        </p>
+
+        <div class="service-arrow">↗</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PHILOSOPHY -->
+<section class="philosophy container reveal">
+
+  <div class="philosophy-grid">
+
+    <div>
+      <h2>
+        Less busywork.<br>
+        More <strong>business.</strong>
+      </h2>
+    </div>
+
+    <div>
+
+      <p class="philosophy-copy">
+        Automation isn't about replacing the human side
+        of your business.
+        <br><br>
+        It's about removing the repetitive work that
+        keeps you away from the work that actually
+        requires you.
+      </p>
+
+      <div class="principles">
+
+        <div class="principle">
+          <span>01</span>
+          <p>Design around your actual business process.</p>
+        </div>
+
+        <div class="principle">
+          <span>02</span>
+          <p>Automate the repetitive, not the relationship.</p>
+        </div>
+
+        <div class="principle">
+          <span>03</span>
+          <p>Build systems your team can actually use.</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PROCESS -->
+<section class="process reveal" id="process">
+
+  <div class="container">
+
+    <div class="process-header">
+
+      <h2>
+        From messy<br>
+        to <em>moving.</em>
+      </h2>
+
+      <p>
+        A simple process designed to uncover where
+        your business is losing time, leads and
+        opportunities — then build the system to fix it.
+      </p>
+
+    </div>
+
+    <div class="process-grid">
+
+      <div class="process-card">
+
+        <div class="process-num">01 — MAP</div>
+
+        <h3>Understand</h3>
+
+        <p>
+          We look at what happens today — where leads
+          come from, where work gets stuck and what
+          keeps landing on your plate.
+        </p>
+
+      </div>
+
+      <div class="process-card">
+
+        <div class="process-num">02 — BUILD</div>
+
+        <h3>Architect</h3>
+
+        <p>
+          The right workflows, automations and
+          customer touchpoints are designed around
+          your actual business.
+        </p>
+
+      </div>
+
+      <div class="process-card">
+
+        <div class="process-num">03 — LAUNCH</div>
+
+        <h3>Run</h3>
+
+        <p>
+          Your system goes live, gets tested and
+          becomes part of the way your business
+          operates every day.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- OUTCOME -->
+<section class="outcome container reveal">
+
+  <div class="outcome-box">
+
+    <div class="outcome-label">
+      THE REAL OUTCOME
+    </div>
+
+    <h2>
+      You get your time back.
+      <span>Without slowing growth.</span>
+    </h2>
+
+    <p>
+      The goal isn't to have more automation.
+      The goal is to have a business that keeps
+      moving when you're not sitting in front of it.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section class="about container reveal" id="about">
+
+  <div class="about-grid">
+
+    <div>
+      <div class="about-label">ABOUT JIRINE</div>
+
+      <h2>
+        I build the
+        <span style="color:var(--brown)">behind-the-scenes</span>
+        of your business.
+      </h2>
+    </div>
+
+    <div class="about-copy">
+
+      <p>
+        I'm Jirine — an Automation & AI Architect
+        helping business owners build systems that
+        make their businesses easier to operate.
+      </p>
+
+      <p>
+        My work sits at the intersection of business
+        processes, automation and AI. Not for the sake
+        of using technology — but because the right
+        system can give an owner something much more
+        valuable:
+        <strong>time.</strong>
+      </p>
+
+      <p>
+        If your business has started growing but
+        everything still depends on you, there's
+        probably a system waiting to be built.
+      </p>
+
+      <div class="signature">
+        JIRINE — AUTOMATION & AI ARCHITECT
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CTA -->
+<section class="cta reveal" id="contact">
+
+  <div class="container">
+
+    <h2>
+      Let's build the
+      business you don't
+      have to babysit.
+    </h2>
+
+    <p>
+      Tell me where your business is getting stuck.
+      I'll help you identify what can be simplified,
+      automated and built properly.
+    </p>
+
+    <a href="mailto:hello@joyirinebarnayha.com" class="primary-btn">
+      HAVE ME BUILD IT FOR YOU →
+    </a>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer>
+
+  <div class="container">
+
+    <div class="footer-top">
+
+      <div class="footer-brand">
+        JIRINE<span>.</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="#systems">Systems</a>
+        <a href="#process">Process</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <div>
+        © 2026 Jirine. All rights reserved.
+      </div>
+
+      <div>
+        Automation & AI Architect
+      </div>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+/* Scroll reveal */
+
+const reveals = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+      }
+    });
+  },
+  {
+    threshold:.12
+  }
+);
+
+reveals.forEach(el => observer.observe(el));
+
+
+/* Subtle nav behavior */
+
+let lastScroll = 0;
+
+window.addEventListener("scroll", () => {
+
+  const nav = document.querySelector("nav");
+  const current = window.scrollY;
+
+  if(current > lastScroll && current > 120){
+    nav.style.opacity = "0.85";
+  }else{
+    nav.style.opacity = "1";
+  }
+
+  lastScroll = current;
+
+});
+
+</script>
+
+</body>
+</html>
